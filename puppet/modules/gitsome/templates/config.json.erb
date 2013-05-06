@@ -1,0 +1,28 @@
+{
+	"listenPort": <%= scope.lookupvar("gitsome::listenPort") %>,
+	"cacheViews": <%= scope.lookupvar("gitsome::cacheViews") %>,
+	"staticBasePath": "<%= scope.lookupvar("gitsome::staticBasePath") %>",
+
+	"redis": {
+		"host": "<%= scope.lookupvar("gitsome::redis_host") %>",
+		"port": <%= scope.lookupvar("gitsome::redis_port") %>
+	},
+
+	"db": {
+		"host": "<%= scope.lookupvar("gitsome::db_host") %>",
+		"port": <%= scope.lookupvar("gitsome::db_port") %>,
+		"user": "<%= scope.lookupvar("gitsome::db_user") %>",
+		"password": "<%= scope.lookupvar("gitsome::db_password") %>",
+		"database": "<%= scope.lookupvar("gitsome::db_database") %>"
+	},
+
+	"session": {
+		"secret": "<%= scope.lookupvar("gitsome::session_secret") %>"
+	},
+
+	"log": {
+		"level": "<%= scope.lookupvar("gitsome::log_level") %>",
+		"showPid": <%= scope.lookupvar("gitsome::log_showPid") %>,
+		"timestamps": "<%= scope.lookupvar("gitsome::log_timestamps") %>"
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"name": "git-some",
+	"version": "0.0.1",
+	"description": "A web front end for your Git server",
+	"keywords": [ "git", "web" ],
+	"directories": {
+		"lib": "src"
+	},
+
+	"author": "Tommy Montgomery <tmont@tmont.com> (http://tmont.com/)",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tmont/git-some.git"
+	},
+
+	"dependencies": {
+		"goa": "0.3.0",
+		"winston": "0.6.2",
+		"jade": "0.29.0",
+		"async": "0.2.7",
+		"sahara": "0.4.2",
+		"redis": "0.8.3",
+		"hiredis": "0.1.15",
+		"connect-redis": "1.4.5",
+		"mysql": "2.0.0-alpha7",
+		"less": "1.3.3"
+	},
+
+	"devDependencies": {
+		"mocha": "1.9.0",
+		"should": "1.2.2"
+	}
+}

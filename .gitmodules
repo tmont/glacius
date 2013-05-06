@@ -1,0 +1,18 @@
+[submodule "puppet/modules/redis"]
+	path = puppet/modules/redis
+	url = git@github.com:tmont/puppet-redis
+[submodule "puppet/modules/nginx"]
+	path = puppet/modules/nginx
+	url = git@github.com:tmont/puppet-nginx
+[submodule "puppet/modules/nodejs"]
+	path = puppet/modules/nodejs
+	url = git@github.com:tmont/puppet-nodejs
+[submodule "puppet/modules/nodeapp"]
+	path = puppet/modules/nodeapp
+	url = git@github.com:tmont/puppet-nodeapp
+[submodule "puppet/modules/firstrun"]
+	path = puppet/modules/firstrun
+	url = git@github.com:tmont/puppet-firstrun
+[submodule "puppet/modules/upstart"]
+	path = puppet/modules/upstart
+	url = git@github.com:tmont/puppet-upstart
