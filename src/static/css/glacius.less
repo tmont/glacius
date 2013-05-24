@@ -1,5 +1,42 @@
 @import "bootstrap/bootstrap";
 
+@secondaryColor: #60cfff;
+@linkColor: darken(@secondaryColor, 20%);
+@linkColorHover: @secondaryColor;
+
+.navbar-static-top, .navbar-fixed-top {
+	border-bottom: 4px solid @secondaryColor;
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+
+	.nav {
+		li {
+			position: relative;
+			.active-style() {
+				text-shadow: 1px 1px 2px @secondaryColor, 1px 1px 2px @secondaryColor;
+			}
+			a {
+				.transition(all 200ms);
+				&:hover {
+					.active-style();
+				}
+			}
+			&.active {
+				&:after {
+					content: "\25B2";
+					color: @secondaryColor;
+					position: absolute;
+					left: 50%;
+					margin-left: -5px;
+					bottom: -8px;
+				}
+				a {
+					.active-style();
+				}
+			}
+		}
+	}
+}
+
 #header {
 	.logo {
 		float: left;
@@ -13,7 +50,7 @@
 		text-shadow: 1px 1px 1px @navbarInverseLinkColor;
 		.transition(all 200ms);
 		&:hover {
-			text-shadow: 0 0 2px fade(@navbarInverseLinkColorHover, 80);
+			text-shadow: 0 0 2px @secondaryColor, 0 0 2px @secondaryColor;
 			color: @navbarInverseLinkColorHover;
 		}
 	}
