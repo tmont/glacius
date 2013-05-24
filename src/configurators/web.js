@@ -30,9 +30,7 @@ module.exports = function(container) {
 	app.set('views', path.join(root, 'views'));
 	app.set('view engine', 'jade');
 
-	//expose some locals for use in templates
 	app.locals.pretty = true;
-//	app.locals.url = routes._locals.url;
 	app.locals.config = {
 		host: config.host,
 		staticBasePath: config.staticBasePath,
@@ -42,6 +40,13 @@ module.exports = function(container) {
 	if (log.isDebugEnabled()) {
 		app.use(log.middleware.bind(log));
 	}
+
+	app.use(function(req, res, next) {
+		res.on('finish', function() {
+			container.resolveSync('ObjectManager').purge();
+		});
+		next();
+	});
 
 	//set up express middleware
 	app.use(app.express.methodOverride());
@@ -54,17 +59,6 @@ module.exports = function(container) {
 			client: container.resolveSync('RedisClient')
 		})
 	}));
-
-	//shove the request and response into the container so we can
-	//use them elsewhere via the container
-	app.use(function(req, res, next) {
-		container
-			.registerInstance({ req: req, res: res }, 'ControllerContext', lifetime.memory())
-			.registerInstance(req, 'Request', lifetime.memory())
-			.registerInstance(res, 'Response', lifetime.memory());
-
-		next();
-	});
 
 	//shove the request and response into the container so we can
 	//use them elsewhere via the container

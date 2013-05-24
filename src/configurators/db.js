@@ -3,7 +3,8 @@ var lifetime = require('sahara').lifetime,
 	redis = require('redis');
 
 module.exports = function(container) {
-	var key = 'DbConnection';
+	var key = 'DbConnection',
+		manager = container.resolveSync('ObjectManager');
 
 	function createMariaConnection(container, callback) {
 		var cfg = container.resolveSync('Config').db,
@@ -42,7 +43,7 @@ module.exports = function(container) {
 
 				log.info('Reconnected to MariaDB');
 				//re-register and override the factory-based registration
-				container.registerInstance(conn, key, lifetime.memory());
+				container.registerInstance(conn, key, lifetime.external(manager));
 			});
 		});
 
@@ -78,7 +79,9 @@ module.exports = function(container) {
 		return redisClient;
 	}
 
+
+
 	container
 		.registerFactory(createRedisClient, 'RedisClient', lifetime.memory())
-		.registerFactory(createMariaConnection, key, lifetime.memory());
+		.registerFactory(createMariaConnection, key, lifetime.external(manager));
 };

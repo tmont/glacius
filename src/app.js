@@ -69,10 +69,16 @@ function initMaster() {
 
 function initWorker() {
 	var sahara = require('sahara'),
+		manager = new sahara.ObjectManager(),
 		container = new sahara.Container()
 			.registerInstance(log, 'Log', sahara.lifetime.memory())
 			.registerInstance(__dirname, 'AppRoot', sahara.lifetime.memory())
-			.registerInstance(config, 'Config', sahara.lifetime.memory());
+			.registerInstance(config, 'Config', sahara.lifetime.memory())
+			.registerInstance(manager, null, sahara.lifetime.memory());
+
+	manager.on('purge', function() {
+		log.debug('Object manager purged');
+	});
 
 	var configurators = [ 'db', 'controllers', 'web', 'routing' ];
 
@@ -84,7 +90,7 @@ function initWorker() {
 	log.info('Listening on port ' + config.listenPort);
 }
 
-if (cluster.isMaster) {
+if (false && cluster.isMaster) {
 	initMaster();
 } else {
 	initWorker();
