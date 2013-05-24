@@ -17,7 +17,7 @@ StaticController.prototype = {
 				return;
 			}
 
-			less.render(contents, { paths: [ self.root ] }, function(err, css) {
+			less.render(contents, { paths: [ path.join(self.root, 'static', 'css') ] }, function(err, css) {
 				if (err) {
 					send(goa.error(err));
 					return;
@@ -30,6 +30,10 @@ StaticController.prototype = {
 
 	js: function(params, send) {
 		send(goa.file(path.join(this.root, 'static', 'js', params.fileName)));
+	},
+
+	images: function(params, send) {
+		send(goa.file(path.join(this.root, 'static', 'images', params.fileName)));
 	}
 };
 

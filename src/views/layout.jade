@@ -6,10 +6,10 @@ html
 		link(rel="stylesheet", type="text/css", href="/static/css/glacius.css")
 	body
 		div#wrapper
-			header#main-header
-				h1: a(href="/") Glacius
-				menu
-					a(href="/login") Login
+			header#main-header.clearfix
+				h1
+					a(href="/"): img#logo(src="/static/images/glacius-transparent.png")
+					a(href="/") Glacius
 			section#content
 				block body
 		block scripts

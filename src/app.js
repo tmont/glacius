@@ -87,7 +87,7 @@ function initWorker() {
 	});
 
 	container.resolveSync('App').listen(config.listenPort);
-	log.info('Listening on port ' + config.listenPort);
+	log.info('Listening on localhost:' + config.listenPort);
 }
 
 if (false && cluster.isMaster) {
