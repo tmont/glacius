@@ -1,25 +1,20 @@
 @import "bootstrap/bootstrap";
 
-body {
-	background-color: white;
-	color: black;
-	font-family: sans-serif;
-	font-size: 16px;
-}
-header, h1, h2, h3, h4, h5, h6 {
-	margin: 0;
-}
-
-#main-header {
-	background-color: black;
-	padding: 10px;
-	h1 {
-		#logo {
-			height: 100px;
+#header {
+	.logo {
+		float: left;
+		img {
+			height: 40px;
 		}
-		a {
-			display: block;
-			float: left;
+	}
+	.external-brand {
+		float: right;
+		color: lighten(@navbarInverseBackground, 10%);
+		text-shadow: 1px 1px 1px @navbarInverseLinkColor;
+		.transition(all 200ms);
+		&:hover {
+			text-shadow: 0 0 2px fade(@navbarInverseLinkColorHover, 80);
+			color: @navbarInverseLinkColorHover;
 		}
 	}
 }
