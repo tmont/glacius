@@ -27,6 +27,6 @@ module.exports = {
 		}
 	],
 	services: [
-		'gitsome'
+		'glacius'
 	]
 };

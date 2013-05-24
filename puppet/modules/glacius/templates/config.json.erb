@@ -1,0 +1,28 @@
+{
+	"listenPort": <%= scope.lookupvar("glacius::listenPort") %>,
+	"cacheViews": <%= scope.lookupvar("glacius::cacheViews") %>,
+	"staticBasePath": "<%= scope.lookupvar("glacius::staticBasePath") %>",
+
+	"redis": {
+		"host": "<%= scope.lookupvar("glacius::redis_host") %>",
+		"port": <%= scope.lookupvar("glacius::redis_port") %>
+	},
+
+	"db": {
+		"host": "<%= scope.lookupvar("glacius::db_host") %>",
+		"port": <%= scope.lookupvar("glacius::db_port") %>,
+		"user": "<%= scope.lookupvar("glacius::db_user") %>",
+		"password": "<%= scope.lookupvar("glacius::db_password") %>",
+		"database": "<%= scope.lookupvar("glacius::db_database") %>"
+	},
+
+	"session": {
+		"secret": "<%= scope.lookupvar("glacius::session_secret") %>"
+	},
+
+	"log": {
+		"level": "<%= scope.lookupvar("glacius::log_level") %>",
+		"showPid": <%= scope.lookupvar("glacius::log_showPid") %>,
+		"timestamps": "<%= scope.lookupvar("glacius::log_timestamps") %>"
+	}
+}

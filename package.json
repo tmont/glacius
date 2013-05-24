@@ -1,5 +1,5 @@
 {
-	"name": "git-some",
+	"name": "glacius",
 	"version": "0.0.1",
 	"description": "A web front end for your Git server",
 	"keywords": [ "git", "web" ],
@@ -10,19 +10,20 @@
 	"author": "Tommy Montgomery <tmont@tmont.com> (http://tmont.com/)",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/tmont/git-some.git"
+		"url": "https://github.com/tmont/glacius.git"
 	},
 
 	"dependencies": {
-		"goa": "0.3.0",
-		"winston": "0.6.2",
-		"jade": "0.29.0",
-		"async": "0.2.7",
-		"sahara": "0.4.2",
+		"goa": "0.3.1",
+		"winston": "0.7.1",
+		"jade": "0.30.0",
+		"async": "0.2.8",
+		"sahara": "0.5.0",
 		"redis": "0.8.3",
 		"hiredis": "0.1.15",
 		"connect-redis": "1.4.5",
-		"mysql": "2.0.0-alpha7",
+		"mysql": "2.0.0-alpha8",
+		"sql": "0.17.0",
 		"less": "1.3.3"
 	},
 

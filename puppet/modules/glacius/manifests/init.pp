@@ -1,4 +1,4 @@
-class gitsome {
+class glacius {
   $host = 'localhost'
   $listenPort = 3000
   $port = 80
@@ -9,10 +9,10 @@ class gitsome {
   $redis_port = 6379
 
   $db_host = 'localhost'
-  $db_user = 'gitsome'
-  $db_password = 'gitsome'
+  $db_user = 'glacius'
+  $db_password = 'glacius'
   $db_port = 3306
-  $db_database = 'gitsome'
+  $db_database = 'glacius'
 
   $log_level = 'debug'
   $log_showPid = true

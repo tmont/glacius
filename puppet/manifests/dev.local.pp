@@ -4,8 +4,8 @@ Exec {
 }
 
 include firstrun
-include gitsome::webapp
-include gitsome::db
+include glacius::webapp
+include glacius::db
 
 class { 'nodejs':
   version => '0.10.5'
@@ -23,5 +23,5 @@ Class['firstrun']
   -> Class['timezone']
   -> Class['redis']
   -> Class['nodejs']
-  -> Class['gitsome::webapp']
-  -> Class['gitsome::db']
+  -> Class['glacius::webapp']
+  -> Class['glacius::db']

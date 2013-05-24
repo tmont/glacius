@@ -1,12 +1,12 @@
-class gitsome::webapp {
-  anchor { 'gitsome::web::begin':
-    before => [ Class['nginx'], Class['gitsome'] ]
+class glacius::webapp {
+  anchor { 'glacius::web::begin':
+    before => [ Class['nginx'], Class['glacius'] ]
   }
 
   include nginx
-  include gitsome
+  include glacius
 
-  $dir = '/var/www/git-some'
+  $dir = '/var/www/glacius'
   $log_dir = "${dir}/logs"
   $config_file = "${dir}/src/config.json"
 
@@ -16,36 +16,36 @@ class gitsome::webapp {
 
   file { $config_file:
     ensure => present,
-    content => template('gitsome/config.json.erb'),
+    content => template('glacius/config.json.erb'),
     mode => 0644
   }
 
-  nginx::resource::vhost { $::gitsome::host:
+  nginx::resource::vhost { $::glacius::host:
     ensure => present,
-    listen_port => $::gitsome::port,
+    listen_port => $::glacius::port,
     rewrite_www_to_non_www => true,
     proxy => 'http://node',
   }
 
   nginx::resource::upstream { 'node':
     ensure => present,
-    members => [ "localhost:${gitsome::listenPort}" ],
+    members => [ "localhost:${glacius::listenPort}" ],
   }
 
-  nodeapp::instance { 'gitsome':
+  nodeapp::instance { 'glacius':
     entry_point => "${dir}/src/app.js",
     log_dir => $log_dir,
     npm_install_dir => $dir,
     watch_config_file => "${dir}/src/watcher-config.js",
     require => [
       Nginx::Resource::Upstream['node'],
-      Nginx::Resource::Vhost[$::gitsome::host],
+      Nginx::Resource::Vhost[$::glacius::host],
       File[$log_dir],
       File[$config_file],
     ]
   }
 
-  anchor { 'gitsome::webapp::end':
-    require => Nodeapp::Instance['gitsome']
+  anchor { 'glacius::webapp::end':
+    require => Nodeapp::Instance['glacius']
   }
 }
